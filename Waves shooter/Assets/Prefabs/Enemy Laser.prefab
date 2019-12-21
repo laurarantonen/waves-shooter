@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -5010421347765172665}
   - component: {fileID: 6067242361312690523}
   - component: {fileID: 1536693636446601797}
+  - component: {fileID: 5044759117898549434}
   m_Layer: 11
   m_Name: Enemy Laser
   m_TagString: Untagged
@@ -48,6 +49,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7739bad87630470428f770f3ee0eef23, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31592d8466df82c4fb4c8b984ca264f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,3 +135,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.26, y: 0.74}
   m_Direction: 0
+--- !u!122 &5044759117898549434
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5349246913447525176}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4284363775
+  m_Size: 0.55
