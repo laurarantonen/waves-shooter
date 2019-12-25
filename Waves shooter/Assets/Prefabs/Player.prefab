@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1939179514737798544}
   - component: {fileID: 1939179514737798545}
   - component: {fileID: -5441896615037304965}
+  - component: {fileID: 262347404}
+  - component: {fileID: 262347405}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -95,12 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0310d290b357adb4895264f4cf6c723a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 12
   health: 200
   laserPrefab: {fileID: 1119775334760790523, guid: 4d5df2e67a1471b449f2eacc9ebe2497,
     type: 3}
   projectileSpeed: 10
-  projectileFiringPeriod: 0.05
+  projectileFiringPeriod: 0.08
   deathSound: {fileID: 8300000, guid: 9a88595cf6b1ee54abd9527a1ee03d45, type: 3}
   deathSoundVolume: 0.5
   shootSound: {fileID: 8300000, guid: 1df97908b398e964f87d79b77f3ae77c, type: 3}
@@ -139,3 +141,35 @@ PolygonCollider2D:
       - {x: 0.2633445, y: -0.20811081}
       - {x: 0.26579797, y: 0.029395103}
       - {x: 0.25615525, y: 0.04356575}
+--- !u!95 &262347404
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939179514737798550}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb0a29ebad47eb74187ccde2e18a4bde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &262347405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939179514737798550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c00811fcce3feb40b10a9bc96d15f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1939179514737798550}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4376324011579539306}
   - component: {fileID: 4376324011579539309}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Background Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,4 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3c1dc5b5eb1a54e9781ce2d114d3a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundScrollSpeed: 0.4
+  backgroundScrollSpeed: 0.3
