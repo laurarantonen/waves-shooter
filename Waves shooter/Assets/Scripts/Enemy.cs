@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    [Header("Enemy Stats")]
     [SerializeField] float health = 100;
-    [SerializeField] float shotCounter;
+    [SerializeField] int scoreValue = 150;
+
+    [Header("Shooting")]
+    float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 10f;
+
+    [Header("VFX settings")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+
+    private SpriteRenderer spriteRenderer;
+    private Material matDefault;
+    private Material matWhite;
 
     [Header("SFX settings")]
     [SerializeField] AudioClip deathSound;
@@ -25,6 +34,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        // Getting materials and spriterenderer
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        matDefault = spriteRenderer.material;
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
     }
 
     // Update is called once per frame
@@ -63,16 +76,27 @@ public class Enemy : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        spriteRenderer.material = matWhite;
         health -= damageDealer.GetDamage();
         damageDealer.Hit();
         if (health <= 0)
         {
             Die();
         }
+        else
+        {
+            Invoke("ResetMaterial", .1f);
+        }
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
     }
 
     private void Die()
     {
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);

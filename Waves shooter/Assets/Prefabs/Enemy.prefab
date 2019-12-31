@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5de311ac2bb63694090d0e3eaca700f2, type: 3}
-  m_Color: {r: 0.8207547, g: 0.077429675, b: 0.2850125, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,15 +112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  shotCounter: 0
+  scoreValue: 150
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
   projectile: {fileID: 5349246913447525176, guid: a9a1bd1dfc76cd745b0b9009c958b0e4,
     type: 3}
   projectileSpeed: 10
-  deathVFX: {fileID: 8553988822334489732, guid: 76cb22028d075fd468397ff15a09a6a3,
+  deathVFX: {fileID: 6322471125564729367, guid: c63abd395906040f79bed9b1724d9b70,
     type: 3}
-  durationOfExplosion: 1
+  durationOfExplosion: 0.5
   deathSound: {fileID: 8300000, guid: c62c88da50a4a6143b84605d798abd68, type: 3}
   deathSoundVolume: 0.1
   shootSound: {fileID: 8300000, guid: be1eb74d6971fc044b9294cc816db1eb, type: 3}

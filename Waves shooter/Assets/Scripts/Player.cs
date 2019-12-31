@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.2f;
 
+    private SpriteRenderer spriteRenderer;
+    private Material matDefault;
+    private Material matWhite;
 
     Coroutine firingCoroutine;
 
@@ -35,6 +38,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        matDefault = spriteRenderer.material;
+        matWhite = Resources.Load("WhiteFlash", typeof(Material)) as Material;
     }
 
     // Update is called once per frame
@@ -53,12 +59,24 @@ public class Player : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+
+        spriteRenderer.material = matWhite;
+
         health -= damageDealer.GetDamage();
         damageDealer.Hit();
         if (health <= 0)
         {
             Die();
         }
+        else
+        {
+            Invoke("ResetMaterial", .1f);
+        }
+    }
+
+    void ResetMaterial()
+    {
+        spriteRenderer.material = matDefault;
     }
 
     private void Die()
@@ -66,6 +84,11 @@ public class Player : MonoBehaviour
         FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
     private void Fire()
