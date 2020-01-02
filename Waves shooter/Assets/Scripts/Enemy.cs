@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] bool nonShooting = false;
 
     [Header("VFX settings")]
     [SerializeField] GameObject deathVFX;
@@ -49,7 +50,7 @@ public class Enemy : MonoBehaviour
     private void CountDownAndShoot()
     {
         shotCounter -= Time.deltaTime; // Time.deltaTime = the time that the frame takes every single frame
-        if (shotCounter <= 0f)
+        if (shotCounter <= 0f && !nonShooting)
         {
             Fire();
             shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
