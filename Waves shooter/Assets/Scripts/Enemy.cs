@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,6 +21,11 @@ public class Enemy : MonoBehaviour
     [Header("VFX settings")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+    /*
+    [SerializeField] Text damageDisplayText;
+    [SerializeField] Canvas renderCanvas;
+    */
+
 
     private SpriteRenderer spriteRenderer;
     private Material matDefault;
@@ -70,8 +77,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
+        {
+            PlayExplosion();
+        }
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if (!damageDealer) { return; }
+        Debug.Log("Enemy hit");
         ProcessHit(damageDealer);
     }
 
@@ -97,8 +109,40 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        if (gameObject == GameObject.FindGameObjectWithTag("Boss"))
+        {
+            FindObjectOfType<Level>().LoadHighScore();
+        }
+
         FindObjectOfType<GameSession>().AddToScore(scoreValue);
         Destroy(gameObject);
+        PlayExplosion();
+        // DisplayDamage();
+    }
+
+    /*
+
+       1. Attach Score Value to score text
+       2. Instantiate ScoreDisplay gameobject when enemy is destroyed
+       3. Destroy ScoreDisplay gameobject
+
+
+  
+
+    private void DisplayDamage()
+    {
+        Text tempTextBox = Instantiate(damageDisplayText, transform.position, transform.rotation) as Text;
+        tempTextBox.transform.SetParent(renderCanvas.transform, false);
+        //Set the text box's text element font size and style:
+        tempTextBox.fontSize = 50;
+        //Set the text box's text element to the current textToDisplay:
+        tempTextBox.text = scoreValue.ToString();
+    }
+
+    */
+
+    private void PlayExplosion()
+    {
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);

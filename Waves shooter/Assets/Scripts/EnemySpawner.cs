@@ -38,7 +38,11 @@ public class EnemySpawner : MonoBehaviour
             waveConfig.GetWaypoints()[0].transform.position,
             Quaternion.identity);
 
-            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
+            if (!waveConfig.GetIsBossWave())
+            {
+                newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
+            }
+            else newEnemy.GetComponent<BossPathing>().SetWaveConfig(waveConfig);
 
             yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
 

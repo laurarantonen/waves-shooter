@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
 
-    [SerializeField] float delayInSeconds = 2f;
+    [SerializeField] float delayInSeconds = 5f;
 
     public void LoadStartMenu()
     {
@@ -25,14 +25,30 @@ public class Level : MonoBehaviour
         StartCoroutine(WaitAndLoad());
     }
 
+    public void LoadHighScore()
+    {
+        StartCoroutine(WaitAndLoadHighScore());
+    }
+
     IEnumerator WaitAndLoad()
     {
         yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene("Game Over");
     }
 
+    IEnumerator WaitAndLoadHighScore()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        SceneManager.LoadScene("High Score");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LoadSettings()
+    {
+        SceneManager.LoadScene("Settings Menu");
     }
 }

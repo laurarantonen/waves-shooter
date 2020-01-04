@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 262347405}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1724781593
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6bea607fdd8df80429cdfbb3e48f240f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,15 +98,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  health: 200
+  health: 300
   laserPrefab: {fileID: 1119775334760790523, guid: 4d5df2e67a1471b449f2eacc9ebe2497,
     type: 3}
-  projectileSpeed: 10
-  projectileFiringPeriod: 0.08
+  projectileSpeed: 12
+  projectileFiringPeriod: 0.1
+  deathVFX: {fileID: 6322471125564729367, guid: c63abd395906040f79bed9b1724d9b70,
+    type: 3}
+  durationOfExplosion: 1
+  healthUpVFX: {fileID: 5762579170920132304, guid: 7b47d2e0adcc6ce44a24a8c9d0c90c69,
+    type: 3}
+  durationOfAnimation: 0.2
   deathSound: {fileID: 8300000, guid: 9a88595cf6b1ee54abd9527a1ee03d45, type: 3}
   deathSoundVolume: 0.5
   shootSound: {fileID: 8300000, guid: 1df97908b398e964f87d79b77f3ae77c, type: 3}
-  shootSoundVolume: 0.05
+  shootSoundVolume: 0.015
 --- !u!60 &-5441896615037304965
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -117,7 +123,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

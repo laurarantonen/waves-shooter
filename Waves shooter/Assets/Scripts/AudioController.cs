@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public float delay = 4;
+    AudioSource levelMusic;
+    AudioSource bossMusic;
+    public int startTime = 4;
+    public int firstClipLength = 82;
 
     void Start()
     {
+        AudioSource[] audios = GetComponents<AudioSource>();
+        levelMusic = audios[0];
+        bossMusic = audios[1];
+
         // Plays an Audio Clip after 4 seconds
-        audioSource.PlayDelayed(delay);
+        levelMusic.PlayScheduled(AudioSettings.dspTime + startTime);
+        bossMusic.PlayScheduled(AudioSettings.dspTime + startTime + firstClipLength);
     }
 
 }

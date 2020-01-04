@@ -12,6 +12,7 @@ public class WaveConfig : ScriptableObject
     [SerializeField] int numberOfEnemies = 5;
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float startDelay = 0f;
+    [SerializeField] bool isBossWave = false;
 
     public GameObject GetEnemyPrefab(){ return enemyPrefab; }
 
@@ -30,4 +31,5 @@ public class WaveConfig : ScriptableObject
     public int GetNumberOfEnemies() { return numberOfEnemies; }
     public float GetMoveSpeed() { return moveSpeed; }
     public float GetStartDelay() { return startDelay; }
+    public bool GetIsBossWave() { return isBossWave; }
 }

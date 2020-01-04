@@ -14,9 +14,11 @@ GameObject:
   - component: {fileID: -4249430884728504497}
   - component: {fileID: -2342336409229483917}
   - component: {fileID: -1573510756308925879}
+  - component: {fileID: 4155235818340210093}
+  - component: {fileID: 1416198226571868080}
   m_Layer: 9
   m_Name: Enemy3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f332650a7bbcd2b4298ad2f39443b7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 300
   scoreValue: 150
   minTimeBetweenShots: 0.2
   maxTimeBetweenShots: 3
@@ -119,10 +121,10 @@ MonoBehaviour:
   deathVFX: {fileID: 6322471125564729367, guid: c63abd395906040f79bed9b1724d9b70,
     type: 3}
   durationOfExplosion: 0.45
-  deathSound: {fileID: 8300000, guid: c62c88da50a4a6143b84605d798abd68, type: 3}
-  deathSoundVolume: 0.1
+  deathSound: {fileID: 8300000, guid: 5ff054413036e1e4d89ec69a86f37393, type: 3}
+  deathSoundVolume: 0.154
   shootSound: {fileID: 0}
-  shootSoundVolume: 0.2
+  shootSoundVolume: 0.05
 --- !u!58 &-2342336409229483917
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,3 +162,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4155235818340210093
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282484260744048365}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 978860cfc0b8c0344a8d46c160edf6ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1416198226571868080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282484260744048365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17061a1a69e2844cbb5d5e3f54184e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100

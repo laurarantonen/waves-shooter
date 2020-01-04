@@ -16,6 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
 
+    [Header("VFX settings")]
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
+
+    [SerializeField] GameObject healthUpVFX;
+    [SerializeField] float durationOfAnimation= 1f;
+
     [Header("SFX settings")]
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.1f;
@@ -52,6 +59,12 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject == GameObject.FindGameObjectWithTag("PowerUp"))
+        {
+            health += 100;
+            PlayHealthUpAnimation();
+            Destroy(other.gameObject);
+        }
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
         if(!damageDealer) { return; }
         ProcessHit(damageDealer);
@@ -63,7 +76,12 @@ public class Player : MonoBehaviour
         spriteRenderer.material = matWhite;
 
         health -= damageDealer.GetDamage();
-        damageDealer.Hit();
+
+        if (damageDealer.gameObject != GameObject.FindGameObjectWithTag("Boss"))
+        {
+            damageDealer.Hit();
+        }
+
         if (health <= 0)
         {
             Die();
@@ -84,7 +102,22 @@ public class Player : MonoBehaviour
         FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        PlayExplosion();
     }
+
+    private void PlayHealthUpAnimation()
+    {
+        GameObject animation = Instantiate(healthUpVFX, transform.position, transform.rotation);
+        Destroy(animation, durationOfAnimation);
+    }
+
+    private void PlayExplosion()
+    {
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+    }
+
 
     public int GetHealth()
     {

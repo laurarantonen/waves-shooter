@@ -21,7 +21,7 @@ public class HealthDisplay : MonoBehaviour
     {
         if(player != null)
         {
-            healthText.text = player.GetHealth().ToString();
+            healthText.text = (player.GetHealth()/100).ToString();
         }
     }
 }
